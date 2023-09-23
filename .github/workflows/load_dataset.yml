@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: download source from kaggle
+        env:
+          KAGGLE_TOKEN: ${{secrets.KAGGLE_TOKEN}}
         run: |
           sudo apt-get install unzip
           pip install kaggle
