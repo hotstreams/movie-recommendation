@@ -2,7 +2,7 @@ name: main
 on:
   workflow_dispatch:
     inputs:
-      is_trained:
+      is_train:
         description: Are models already trained
         required: true
         default: 'true'
