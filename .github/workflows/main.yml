@@ -58,7 +58,9 @@ jobs:
         env:
           DB_USERNAME: ${{secrets.DB_USERNAME}}
           DB_PASSWORD: ${{secrets.DB_PASSWORD}}
-        run: python3 src/estimate.py
+        run: | 
+          cat resources/model_version.txt
+          python3 src/estimate.py
 
   selection:
     runs-on: self-hosted
