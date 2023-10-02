@@ -34,8 +34,8 @@ ratings.csv - содержит информацию о оценках конкр
 
 #### Диаграмма активности
 
-![Image](images/activity.png)
+![Диаграмма без названия drawio(13)](https://github.com/hotstreams/movie-recommendation/assets/37740577/943d7a22-f16b-4142-9453-8fd46ce558ba)
 
 #### Диаграмма компонентов
 
-![Image](images/component.png)
+![Диаграмма без названия drawio(14)](https://github.com/hotstreams/movie-recommendation/assets/37740577/97f36767-9a97-4de4-b709-cb38a01adbf1)
