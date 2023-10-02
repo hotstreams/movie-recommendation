@@ -1,8 +1,8 @@
 name: load_dataset
 on: [workflow_dispatch]
 jobs:
-  pull:
-    runs-on: ubuntu-latest
+  load_dataset:
+    runs-on: self-hosted
     steps:
       - name: download source from kaggle
         env:
@@ -14,11 +14,16 @@ jobs:
           echo $KAGGLE_TOKEN > $HOME/.kaggle/kaggle.json
           kaggle datasets download -d rounakbanik/the-movies-dataset
           mkdir -p assets/source-data/
-          unzip the-movies-dataset.zip -d assets/source-data/
+          unzip the-movies-dataset.zip -d resources/
+      - name: load
+        env:
+          DB_USERNAME: ${{secrets.DB_USERNAME}}
+          DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+        run: python3 src/load_dataset.py
 
   preprocess:
-    runs-on: ubuntu-latest
-    needs: pull
+    runs-on: self-hosted
+    needs: load_dataset
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -27,4 +32,4 @@ jobs:
         env:
           DB_USERNAME: ${{secrets.DB_USERNAME}}
           DB_PASSWORD:  ${{secrets.DB_PASSWORD}}
-        run: python3 src/preprocess_dataset.py
+        run: python3 src/preprocess.py
