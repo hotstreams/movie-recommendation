@@ -13,7 +13,7 @@ class FILE_PATH(enum.Enum):
     SIMILARITY_MOV = "../resources/similarity_movies"
 
 def get_and_increment_version():
-    with open("../resources/model_version.txt", "r+") as file:
+    with open("./resources/model_version.txt", "r+") as file:
         version = int(file.readline(1)) + 1
         file.seek(0)
         file.write(str(version))
