@@ -4,16 +4,15 @@ jobs:
   load_dataset:
     runs-on: self-hosted
     steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        
       - name: download source from kaggle
         env:
           KAGGLE_TOKEN: ${{secrets.KAGGLE_TOKEN}}
         run: |
-          sudo apt-get install unzip
-          pip install kaggle
-          mkdir $HOME/.kaggle
           echo $KAGGLE_TOKEN > $HOME/.kaggle/kaggle.json
           kaggle datasets download -d rounakbanik/the-movies-dataset
-          mkdir -p assets/source-data/
           unzip the-movies-dataset.zip -d resources/
       - name: load
         env:
