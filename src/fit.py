@@ -20,7 +20,7 @@ def fit_SVD(connection, version):
 
     reader = Reader()
     df = Dataset.load_from_df(train_data, reader)
-    kf = KFold(n_splits=5, random_state=42)
+    kf = KFold(n_splits=5)
     kf.split(df)
 
     svd = SVD()
