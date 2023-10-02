@@ -2,13 +2,13 @@ name: main
 on:
   workflow_dispatch:
     inputs:
-      is_trained:
+      is_train:
         description: Are models already trained
         required: true
-        default: true
+        default: 'true'
 jobs:
   train:
-    if: github.event.inputs.is_train == true
+    if: ${{ github.event.inputs.is_train == 'true' }}
     permissions:
       contents: write
     runs-on: self-hosted
@@ -29,7 +29,7 @@ jobs:
             message: 'version change'
 
   extra_train:
-    if: github.event.inputs.is_train == false
+    if: ${{ github.event.inputs.is_train == 'false' }}
     permissions:
       contents: write
     runs-on: self-hosted
