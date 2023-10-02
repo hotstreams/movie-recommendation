@@ -4,6 +4,9 @@ jobs:
   load_dataset:
     runs-on: self-hosted
     steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        
       - name: download source from kaggle
         env:
           KAGGLE_TOKEN: ${{secrets.KAGGLE_TOKEN}}
