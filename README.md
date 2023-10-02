@@ -26,11 +26,10 @@ ratings.csv - содержит информацию о оценках конкр
 
 Пример датасета
 
-![изображение](https://github.com/hotstreams/movie-recommendation/assets/37740577/9cca5859-c7a8-481f-a82e-734d2bf9e477)
-![изображение](https://github.com/hotstreams/movie-recommendation/assets/37740577/4b636d78-4254-4779-8156-cb05979d0a18)
-![изображение](https://github.com/hotstreams/movie-recommendation/assets/37740577/cfe6ead5-0ea6-4e7c-adaf-0623526d3f51)
-![изображение](https://github.com/hotstreams/movie-recommendation/assets/37740577/0d6a397c-3293-486f-bc48-012ddf12f671)
-![изображение](https://github.com/hotstreams/movie-recommendation/assets/37740577/152ee0e6-79f2-421a-8ac5-22529f2dc6d8)
+![изображение](images/info.png)
+![изображение](images/genres.png)
+![изображение](images/keywords.png)
+![изображение](images/correlation.png)
 
 #### Диаграмма активности
 
