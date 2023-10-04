@@ -3,7 +3,7 @@ import os
 from flask import Flask, request
 import joblib
 from database_service import get_db_connection, get_best_model, get_similarity, get_titles, get_model_by_version
-from info import FILE_PATH, MODELS_TYPE, get_version
+from info import FILE_PATH, MODELS_TYPE, get_refit_version
 
 class Server:
     def __init__(self):
@@ -25,7 +25,7 @@ def get_data(connection):
     name = get_best_model(connection, FILE_PATH.MODEL_FILE.value)
     m = joblib.load(FILE_PATH.MODEL_FILE.value)
     os.remove(FILE_PATH.MODEL_FILE.value)
-    get_similarity(connection, get_version(),
+    get_similarity(connection, get_refit_version(),
                    FILE_PATH.SIMILARITY_SIM.value,
                    FILE_PATH.SIMILARITY_IND.value,
                    FILE_PATH.SIMILARITY_MOV.value)
