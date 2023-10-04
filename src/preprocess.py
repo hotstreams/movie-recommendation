@@ -23,6 +23,7 @@ def clean_movies(movies):
     movies = movies.dropna(subset=['vote_average', 'vote_count', 'title'])
     movies = movies.fillna('')
 
+
     movies['id'] = pd.to_numeric(movies['id'])
     movies['vote_average'] = pd.to_numeric(movies['vote_average'])
     movies['vote_count'] = pd.to_numeric(movies['vote_count'])

@@ -80,11 +80,11 @@ def update_with_name():
     server.name = name
     return 'ok'
 
-@app.route('/titles')
+@app.route('/movies/titles')
 def titles():
     return get_titles(connection)['titles'].tolist()
 
-@app.route('/similar')
+@app.route('/movies/similar')
 def get_similar():
     if not request.args.get('title'):
         raise RuntimeError('missing title')
@@ -103,7 +103,7 @@ def get_similar_movies(title, n):
     movies = server.movies.loc[movie_indices]
     return movies
 
-@app.route('/recommended')
+@app.route('/movies/recommended')
 def r():
     if not request.args.get('title'):
         raise RuntimeError('missing title')

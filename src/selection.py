@@ -5,7 +5,7 @@ def evaluate_best_model(connection, version):
     model_metrics = get_model_metrics(connection, version)
     result = []
     for index, row in model_metrics.iterrows():
-        result.append((row[0], row[1]))
+        result.append((row[0], float(row[1]) * 10 + float(row[2]) / 10))
     result.sort(key=lambda x: x[1])
     best = result[0]
     save_best_model(connection, version, best[0], best[1])
