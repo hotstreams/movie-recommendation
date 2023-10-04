@@ -71,7 +71,6 @@ jobs:
   selection:
     runs-on: self-hosted
     needs: estimate
-    if: always()
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -85,7 +84,6 @@ jobs:
   deploy:
     runs-on: self-hosted
     needs: selection
-    if: always()
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
