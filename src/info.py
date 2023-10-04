@@ -23,3 +23,7 @@ def get_and_increment_version():
 def get_version():
     with open("./resources/model_version.txt", "r") as file:
         return int(file.readline(1)) + 1
+
+def get_refit_version():
+    with open("./resources/model_version.txt", "r") as file:
+        return int(file.readline(1))

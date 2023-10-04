@@ -6,7 +6,7 @@ from sklearn.metrics.pairwise import linear_kernel
 from database_service import get_db_connection, get_vectorizer_from_db, \
     get_data_from_table, get_model_by_version, save_vectorizer, save_model, get_ratings_retrain_data, \
     get_processed_retrain_data, get_processed_data, save_similarity
-from info import FILE_PATH, MODELS_TYPE, get_version, get_and_increment_version
+from info import FILE_PATH, MODELS_TYPE, get_version, get_and_increment_version, get_refit_version
 import os
 import pickle
 from surprise import Dataset, Reader
@@ -89,7 +89,7 @@ def train_similarity(connection, version, extra_train, vectorized_data):
 
 if __name__ == "__main__":
     connection = get_db_connection()
-    version = get_version()
+    version = get_refit_version()
     extra_ratings_data = get_ratings_retrain_data(connection)
     extra_processed_data = get_processed_retrain_data(connection)
     vectorized = train_vectorizer(connection, version, extra_processed_data)
