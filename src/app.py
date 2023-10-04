@@ -6,13 +6,14 @@ from database_service import get_db_connection, get_best_model, get_similarity, 
 from info import FILE_PATH, MODELS_TYPE, get_version
 
 class Server:
-    def __init__(self, m, s, indices, movies, name):
-        self.model = m
-        self.similarity = s
-        self.indices = indices
-        self.movies = movies.drop_duplicates()
-        self.links = self.movies.set_index('tmdbId')
-        self.name = name
+    def __init__(self):
+        # get_data(connection)
+        self.model = None
+        self.similarity = None
+        self.indices = None
+        self.movies = None
+        self.links = None
+        self.name = None
 
     def predict(self, user, movieId):
         if self.name == MODELS_TYPE.SVD.value:
@@ -38,8 +39,8 @@ def get_data(connection):
 
 connection = get_db_connection()
 app = Flask(__name__)
-model, sim, ind, mov, name = get_data(connection)
-server = Server(model, sim, ind, mov, name)
+# model, sim, ind, mov, name = get_data(connection)
+server = Server()
 
 @app.route('/update')
 def update():
@@ -48,6 +49,7 @@ def update():
     server.similarity = sim
     server.indices = ind
     server.movies = mov
+    server.links = server.movies.set_index('tmdbId')
     server.name = name
     return 'ok'
 
