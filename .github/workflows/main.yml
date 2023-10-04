@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       is_train:
-        description: Are models already trained
+        description: Model train mode
         required: true
         default: 'true'
 jobs:
@@ -42,6 +42,12 @@ jobs:
           DB_USERNAME: ${{secrets.DB_USERNAME}}
           DB_PASSWORD: ${{secrets.DB_PASSWORD}}
         run: python3 src/refit.py
+
+      - name: commit version change
+        uses: EndBug/add-and-commit@v9.1.1
+        with:
+            default_author: github_actions
+            message: 'version change'
 
   estimate:
     runs-on: self-hosted
